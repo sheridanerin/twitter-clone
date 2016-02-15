@@ -6,7 +6,7 @@ $(document).ready(function() {
 	$('.tweet-actions').hide();
 
 	$('.tweet-compose').click(function() {
-		$(this).height('5em');
+		$(this).css('height','5em');
 		$('#tweet-controls').show();
 	});
 
@@ -44,33 +44,16 @@ $(document).ready(function() {
 		
 	});
 
-var swap = true;
-
-	$(document).on('click','.content', function() {	
-		if (swap) {
-			$(this).find('.stats').toggle(swap);
-			$(this).find('.reply').toggle(swap);
-			swap = false;
-		} else {
-			$(this).find('.stats').toggle(swap);
-			$(this).find('.reply').toggle(swap);
-			swap = true;
-		}
+	$(document).on('click','.tweet', function() {	
+			$(this).find('.stats').toggle(true); //I used toggle originally because I wanted to find a way to toggle back to 
+			$(this).find('.reply').toggle(false); //false so that the sections would disappear if the tweet was clicked on again. 
 	});
 
-	$(document).on('mouseenter', '.content', function() {
+
+	$('.content').on('hover', function() {
 		$('tweet-actions').show();
-	});
-
-	$(document).on('mouseleave', '.content', function() {
+	}, function() {
 		$('tweet-actions').hide();
 	});
-
-	
-
-
-
-
-
 
 });
